@@ -8,7 +8,7 @@ const ChatApp = () => {
   const [messageInput, setMessageInput] = useState("");
 
   useEffect(() => {
-    const newSocket = io("http://localhost:3000");
+    const newSocket = io("http://195.82.29.237:3000");
     setSocket(newSocket);
 
     return () => {

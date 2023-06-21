@@ -36,8 +36,6 @@ export class ChatGateway
   handleMessage(client: Socket, message: string) {
     console.log(`Received message from client ${client.id}: ${message}`);
 
-    // Process the received message as needed
-
     const newMessage = {
       sender: client.id,
       content: message,
