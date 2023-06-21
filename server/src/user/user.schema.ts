@@ -1,17 +1,21 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @Schema()
+@ObjectType()
 export class User {
-  @Prop()
-  id: string;
+  @Field((type) => ID)
+  _id: number;
 
   @Prop()
+  @Field((type) => String, { description: 'User name' })
   name: string;
 
-  @Prop()
+  @Prop({ unique: true })
+  @Field((type) => String, { description: 'User email' })
   email: string;
 }
 
-export type ProductDocument = HydratedDocument<User>;
-export const ProductSchema = SchemaFactory.createForClass(User);
+export type UserDocument = User & Document;
+export const UserSchema = SchemaFactory.createForClass(User);

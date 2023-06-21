@@ -8,19 +8,24 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export interface CreateUserInput {
+    name: string;
+    email: string;
+}
+
 export interface User {
-    id: string;
+    _id: string;
     name: string;
     email: string;
 }
 
 export interface IQuery {
     getAllUsers(): User[] | Promise<User[]>;
-    getUser(id: string): Nullable<User> | Promise<Nullable<User>>;
+    getUser(email: string): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export interface IMutation {
-    createUser(name: string, email: string): User | Promise<User>;
+    createUser(createUser: CreateUserInput): User | Promise<User>;
 }
 
 type Nullable<T> = T | null;

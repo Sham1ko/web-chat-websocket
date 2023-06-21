@@ -1,14 +1,19 @@
 type User {
-  id: ID!
+  _id: ID!
   name: String!
   email: String!
 }
 
 type Query {
   getAllUsers: [User!]!
-  getUser(id: ID!): User
+  getUser(email: String!): User
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
 }
 
 type Mutation {
-  createUser(name: String!, email: String!): User!
+  createUser(createUser: CreateUserInput!): User!
 }

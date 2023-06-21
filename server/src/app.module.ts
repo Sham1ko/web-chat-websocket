@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { Message, MessageSchema } from './message.schema';
 import { ChatGateway } from './chat.gateway';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { join } from 'path';
+import { UsersModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -22,6 +21,7 @@ import { join } from 'path';
       },
       playground: true,
     }),
+    UsersModule,
   ],
   providers: [ChatGateway],
 })
